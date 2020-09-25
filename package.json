@@ -1,0 +1,28 @@
+{
+  "name": "yungo-filecoin",
+  "version": "1.0.0",
+  "description": "filecoin",
+  "main": "index.js",
+  "scripts": {
+	"start": "nodemon main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yungo-sz/yungo-filecoin.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yungo-sz/yungo-filecoin/issues"
+  },
+  "homepage": "https://github.com/yungo-sz/yungo-filecoin#readme",
+  "dependencies": {
+    "@textile/powergate-client": "^2.0.0",
+    "express": "^4.17.1",
+    "multer": "^1.4.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
