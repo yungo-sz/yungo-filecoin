@@ -90,11 +90,13 @@ router.get("/file/:cid", async (req, res) => {
 
     let bufs = await get(req.params.cid)
 
-    let results = bufs.reduce((pre, cur) => {
-        return pre + String.fromCharCode(cur)
-    }, '')
-
-    res.send(new ArrayBuffer(results))
+    // let results = bufs.reduce((pre, cur) => {
+    //     return pre + String.fromCharCode(cur)
+    // }, '')
+    
+    res.send(Buffer.from(bufs))
+    
+    // res.send(new ArrayBuffer(results))
 })
 
 //  ffs defaultStorageConfig 获取ffs默认配置
