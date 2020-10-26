@@ -1,10 +1,11 @@
 var express = require("express")
-
 var multer  = require('multer');
-
 var upload = multer({});
-
 var router = express.Router()
+var { expressJWT } = require("../middleware/jwt")
+
+//jwt校验中间件
+router.use(expressJWT)
 
 const {
     id,
@@ -107,7 +108,7 @@ router.get("/defaultStorageConfig", async (req, res) => {
 })
 
 //ffs log  查看 cid的日志 : QmZc5wydh9YsSECrCKcZCBMNhLRpgS1THibT3pakcbbJpp
-router.get("/logs/:cid", async (req, res) => {
+router.get("/logs/:cid", (req, res) => {
 
     // res.set('Content-Type: text/event-stream')
 
@@ -117,7 +118,7 @@ router.get("/logs/:cid", async (req, res) => {
         logs.push(logEvent)
     }, req.params.cid)
 
-    setTimeout(() =>{res.send(logs)}, 3000)
+    setTimeout(() =>{res.send(logs)}, 4000)
 
     // setInterval(()=>{res.send(new Date())},2000)
     // res.send(new Buffer('342432'))

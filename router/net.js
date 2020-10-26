@@ -1,6 +1,10 @@
 var express = require("express")
 const { getPeers,listenAddr,findPeer } = require("../utils/net")
 var router = express.Router()
+var { expressJWT } = require("../middleware/jwt")
+
+//jwt校验中间件
+router.use(expressJWT)
 
 // net peers 查看chain上所有的peer节点
 router.get("/peers",async (req,res)=>{
