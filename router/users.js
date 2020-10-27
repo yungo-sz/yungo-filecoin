@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var casbinmiddleware = require('../middleware/rbac.js');
-var { expressJWT } = require("../middleware/jwt")
+var { expressJWT,secretOrPrivateKey } = require("../middleware/jwt")
+var jwt = require("jsonwebtoken")
 
 //权限控制中间件
 router.use(casbinmiddleware());

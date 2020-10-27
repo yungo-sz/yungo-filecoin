@@ -15,9 +15,9 @@ var healthRouter = require("./router/health")
 
 app.use(bodyParser.json())
 //设置jwt认证过滤器
-app.use(expressJWT.unless({
-  path: ['/users/login','/users/register']
-}));
+// app.use(expressJWT.unless({
+//   path: ['/users/login','/users/register']
+// }));
 
 app.use("/users", userRouter)
 app.use("/health", healthRouter)
