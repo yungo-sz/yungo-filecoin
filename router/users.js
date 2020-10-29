@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var casbinmiddleware = require('../middleware/rbac.js');
-var { expressJWT,secretOrPrivateKey } = require("../middleware/jwt")
+var { expressJWT, secretOrPrivateKey } = require("../middleware/jwt")
 var jwt = require("jsonwebtoken")
 
 //权限控制中间件
@@ -13,7 +13,7 @@ router.post("/login", function (req, res) {
         result: 'ok',
         token: jwt.sign({
             name: "牛空空",
-            data: "========="
+            data: "******"
         }, secretOrPrivateKey, {
             expiresIn: 60 * 60 * 24
         })
