@@ -7,7 +7,7 @@ var pow = require("./pow.js")
 // remove      Removes a Cid from being tracked as an active storage
 // replace     Pushes a StorageConfig for c2 equal to that of c1, and removes c1
 // send        Send fil from one managed address to any other address
-// storage-job Get a storage job's current status
+
 
 // id          Returns the FFS instance id
 const id = () => pow.ffs.id()
@@ -39,6 +39,9 @@ const watchLogs = (handler, cid) => pow.ffs.watchLogs(handler, cid, { includeHis
 // cancel      Cancel an executing job
 const cancelJob = jobId => pow.ffs.cancelJob(jobId)
 
+// storage-job Get a storage job's current status
+const getStorageJob = jobId => pow.ffs.getStorageJob(jobId)
+
 
 module.exports = {
     id,
@@ -53,6 +56,7 @@ module.exports = {
     getStorageConfig,
     get,
     defaultStorageConfig,
+    getStorageJob,
     watchLogs,
     cancelJob
 }

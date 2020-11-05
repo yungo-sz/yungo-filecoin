@@ -1,6 +1,6 @@
 var { createPow } = require("@textile/powergate-client")
-const host = "http://183.61.251.232:6002" 
+const host = "http://183.61.251.226:6002" 
 const pow = createPow({ host })
-pow.setToken("9854caec-6df1-4581-adbe-04e565375208")
+pow.setToken("459ace63-a62c-4a2b-b254-e88ea6d14855")
 
 module.exports = pow

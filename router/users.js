@@ -4,25 +4,44 @@ var casbinmiddleware = require('../middleware/rbac.js');
 var { expressJWT, secretOrPrivateKey } = require("../middleware/jwt")
 var jwt = require("jsonwebtoken")
 
+var { userRegister, userLogin } = require('../serviceImpl/userImpl')
+
 //权限控制中间件
 router.use(casbinmiddleware());
 
 //login
-router.post("/login", function (req, res) {
-    res.json({
-        result: 'ok',
-        token: jwt.sign({
-            name: "牛空空",
-            data: "******"
-        }, secretOrPrivateKey, {
-            expiresIn: 60 * 60 * 24
-        })
-    })
+router.post("/login", async (req, res) => {
+
+    try {
+        let result = await userLogin(req.body);
+        res.json({
+            code: 0,
+            data: jwt.sign({
+                id: result.id,
+                username: result.username,
+                mobile: result.mobile,
+                wechat: result.wechat,
+            }, secretOrPrivateKey, {
+                expiresIn: 60 * 60 * 24
+            }),
+            msg: 'success',
+        });
+    } catch (e) {
+        res.json(e)
+    }
+
 });
 
 //register
-router.post("/register", function (req, res) {
-    res.json(req.body)
+router.post("/register", async (req, res) => {
+
+    try {
+        let result = await userRegister(req.body)
+        res.json(result)
+    } catch (e) {
+        res.json(e)
+    }
+
 });
 
 /* GET users listing. */
